@@ -1,6 +1,5 @@
 package unirita_contest;
 
-
 import java.util.Scanner;
 
 public class Practice4_A {
@@ -8,56 +7,35 @@ public class Practice4_A {
 	public static void main(String[] args) {
 
 		Scanner sd = new Scanner(System.in);
-		String s = sd.next();
+		String s = sd.nextLine();
 
 		int l = s.length();
+		String output;
 
 
-		//if(l>3) {//文字列が偶数の場合　4文字以上
+		if(l>1) {//文字列が偶数の場合　2文字以上
 			if(l%2==0) {
-				String front = s.substring(0, l/2);
-				String end = s.substring(l/2);
+				String head = s.substring(0,1);
+				String nec = s.substring(1, l/2);
+				String tail = s.substring(s.length()-1);
+				String leg = s.substring(l/2, s.length()-1);
 
-				String head = front.substring(0,1);
-				String nec = front.substring(1);
-				String newFront = nec.concat(head);
-
-				String tail = end.substring(end.length()-1);
-				String leg = end.substring(0, end.length()-1);
-				String newEnd = tail.concat(leg);
-
-				String output = newFront.concat(newEnd);
-
-				System.out.println(output);
-
-
+				output = nec + head + tail + leg;
 			//奇数の場合
 			}else {
-				String front = s.substring(0,(l-1)/2);
-				String end = s.substring((l+1)/2);
 				String middle = s.substring((l-1)/2,(l-1)/2+1);
+				String head = s.substring(0,1);
+				String nec = s.substring(1,(l-1)/2);
+				String tail = s.substring(s.length()-1);
+				String leg = s.substring((l-1)/2+1, s.length()-1);
 
-				String head = front.substring(0,1);
-				String nec = front.substring(1);
-				String newFront = nec.concat(head);
-
-				String tail = end.substring(end.length()-1);
-				String leg = end.substring(0, end.length()-1);
-				String newEnd = tail.concat(leg);
-
-				String output = newFront.concat(middle);
-				output = output.concat(newEnd);
-
-				System.out.println(output);
+				output = nec + head + middle + tail + leg;
 			}
-
-
-		//}else {
-			//System.out.println(s);
-		//}
-
-
-
+			
+		}else {
+			output = s;
+		}
+		System.out.println(output);
 	}
 
 }
